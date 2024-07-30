@@ -77,6 +77,114 @@
         color: white;
         font-size: 20px;
       }
+
+      h1 {
+        margin: 0;
+        font-weight: 700;
+        letter-spacing: 1px;
+        font-size: 24px;
+      }
+  
+      .container {
+        display: flex;
+        max-width: 1400px;
+        margin: 2em auto;
+        padding: 0 2em;
+        gap: 2em;
+      }
+  
+      .channel-list {
+        width: 300px;
+        height: calc(100vh - 200px);
+        background-color: var(--card-background);
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        overflow-y: auto;
+        transition: box-shadow 0.3s ease;
+        scrollbar-width: thin;
+        scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+      }
+  
+      .channel-list::-webkit-scrollbar {
+        width: 8px;
+      }
+  
+      .channel-list::-webkit-scrollbar-track {
+        background: var(--scrollbar-track);
+      }
+  
+      .channel-list::-webkit-scrollbar-thumb {
+        background-color: var(--scrollbar-thumb);
+        border-radius: 4px;
+      }
+  
+      .channel-list:hover {
+        box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      }
+  
+      .channel-item {
+        padding: 1em;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+  
+      .channel-item:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateX(5px);
+      }
+  
+      .channel-item.active {
+        background-color: rgba(0, 168, 255, 0.2);
+        border-left: 4px solid var(--primary-color);
+      }
+  
+      .channel-name {
+        font-weight: bold;
+        margin-bottom: 0.5em;
+      }
+  
+      .channel-category {
+        color: #aaa;
+        font-size: 0.9em;
+      }
+  
+      .player-container {
+        flex-grow: 1;
+        position: relative;
+      }
+  
+      #videoPlayer {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background-color: #000;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        transition: box-shadow 0.3s ease;
+        position: relative;
+        z-index: 2;
+      }
+  
+      #videoPlayer:hover {
+        box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      }
+  
+      .video-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 150%;
+        height: 150%;
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: 0.6;
+        transition: all 0.5s ease;
+        filter: blur(50px);
+        z-index: 1;
+      }
+      
+
     </style>
   </head>
   <body>
