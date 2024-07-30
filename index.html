@@ -412,6 +412,49 @@
         const glowColor = `rgb(${Math.round(lastGlowColor.r)},${Math.round(lastGlowColor.g)},${Math.round(lastGlowColor.b)})`;
         videoGlow.style.background = `radial-gradient(circle, ${glowColor} 0%, rgba(${Math.round(lastGlowColor.r)},${Math.round(lastGlowColor.g)},${Math.round(lastGlowColor.b)},0.2) 70%, rgba(${Math.round(lastGlowColor.r)},${Math.round(lastGlowColor.g)},${Math.round(lastGlowColor.b)},0) 100%)`;
       }
-
+      // Load channels
+      loadChannels();
+  
+      // Enable smooth scrolling for the channel list
+      channelList.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        channelList.scrollBy({
+          top: e.deltaY,
+          behavior: 'smooth'
+        });
+      });
+  
+      // Enable keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (currentChannelIndex > 0) {
+            selectChannel(currentChannelIndex - 1);
+          }
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (currentChannelIndex < channels.length - 1) {
+            selectChannel(currentChannelIndex + 1);
+          }
+        }
+      });
+  
+      // Create dynamic background bubbles
+      function createBubbles() {
+        const background = document.querySelector('.background');
+        for (let i = 0; i < 10; i++) {
+          const bubble = document.createElement('div');
+          bubble.classList.add('bubble');
+          bubble.style.width = `${Math.random() * 100 + 50}px`;
+          bubble.style.height = bubble.style.width;
+          bubble.style.left = `${Math.random() * 100}%`;
+          bubble.style.top = `${Math.random() * 100}%`;
+          bubble.style.animationDuration = `${Math.random() * 10 + 10}s`;
+          bubble.style.animationDelay = `${Math.random() * 5}s`;
+          background.appendChild(bubble);
+        }
+      }
+  
+      createBubbles();
   </script>
   </html>
